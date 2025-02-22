@@ -1,31 +1,31 @@
 public class PolicyHolder{
    //fields
-   private String policyHolderFirstName;
-   private String policyHolderLastName;
-   private int policyHolderAge;
-   private String policyHolderSmokingStatus;
-   private double policyHolderHeight;
-   private double policyHolderWeight;
+   private String firstName;
+   private String lastName;
+   private int age;
+   private String smokingStatus;
+   private double height;
+   private double weight;
    
    //constructors
    //no arg constructor
    public PolicyHolder(){
-      policyHolderFirstName = "John";
-      policyHolderLastName = "Doe";
-      policyHolderAge = 20;
-      policyHolderSmokingStatus = "non-smoker";
-      policyHolderHeight = 60.0;
-      policyHolderWeight = 200;
+      firstName = "John";
+      lastName = "Doe";
+      age = 20;
+      smokingStatus = "non-smoker";
+      height = 60.0;
+      weight = 200;
    }
    
    //constructor with arguments
    public PolicyHolder(String firstName, String lastName, int age, String smokingStatus, double height, double weight){
-      policyHolderFirstName = firstName;
-      policyHolderLastName = lastName;
-      policyHolderAge = age;
-      policyHolderSmokingStatus = smokingStatus;
-      policyHolderHeight = height;
-      policyHolderWeight = weight;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = age;
+      this.smokingStatus = smokingStatus;
+      this.height = height;
+      this.weight = weight;
    }
    
    //field methods: setters and getters
@@ -36,16 +36,16 @@ public class PolicyHolder{
       setPolicyHolderFirstName sets the policy holder's first name
       @param The policy holder's first name
    */
-   public void setPolicyHolderFirstName(String firstName){
-      policyHolderFirstName = firstName;
+   public void setfirstName(String name){
+      firstName = name;
    }
    
    /**
       getPolicyHolderFirstName method gets the first name of the policy holder
       @return The policy holder's first name
    */
-   public String getPolicyHolderFirstName(){
-      return policyHolderFirstName;
+   public String getFirstName(){
+      return firstName;
    }
    
    //policyHolderLastName
@@ -54,16 +54,16 @@ public class PolicyHolder{
       setPolicyHolderLastName sets the last name of the policy holder
       @param The policy holder's last name
    */
-   public void setPolicyHolderLastName(String lastName){
-      policyHolderLastName = lastName;
+   public void setLastName(String name){
+      lastName = name;
    }
    
    /**
       getPolicyHolderLastName gets the last name of the policy holder
       @return The policy holder's last name
    */
-   public String getPolicyHolderLastName (){
-      return policyHolderLastName;
+   public String getLastName (){
+      return lastName;
    }
    
    //policyHolderAge
@@ -72,16 +72,16 @@ public class PolicyHolder{
       setPolicyHolderAge method sets the policy holder's age
       @param The age of the policy holder
    */
-   public void setPolicyHolderAge (int age){
-      policyHolderAge = age;
+   public void setAge (int a){
+      age = a;
    }
    
    /**
       setPolicyHolderAge method gets the policy holder's age
       @return the policy holder's age
    */
-   public int getPolicyHolderAge(){
-      return policyHolderAge;
+   public int getAge(){
+      return age;
    }
    
    //policyHolderSmokingStatus
@@ -90,9 +90,9 @@ public class PolicyHolder{
       setPolicyHolderSmokingStatus sets the smoking status of policy holder
       @param The policy holder's smoking status (non-smoker or smoker)
    */
-   public void setPolicyHolderSmokingStatus(String status){
+   public void setSmokingStatus(String status){
       if (status.equalsIgnoreCase("smoker") || status.equalsIgnoreCase("non-smoker")){
-         policyHolderSmokingStatus = status;
+         smokingStatus = status;
       }
    }
    
@@ -100,8 +100,8 @@ public class PolicyHolder{
       getPolicyHolderSmokingStatus gets the policy holder's smoking status
       @return The smoking status of the policy holder
    */
-   public String getPolicyHolderSmokingStatus(){
-      return policyHolderSmokingStatus;
+   public String getSmokingStatus(){
+      return smokingStatus;
    }
    
    //policyHolderHeight
@@ -110,16 +110,16 @@ public class PolicyHolder{
       setPolicyHolderHeight sets the height of the policy holder
       @param The height of the policy holder
    */
-   public void setPolicyHolderHeight (double height){
-      policyHolderHeight = height;
+   public void setHeight (double h){
+      height = h;
    }
    
    /**
       getPolicyHolderHeight gets the policy holder's height
       @return The height of the policy holder
    */
-   public double getPolicyHolderHeight(){
-      return policyHolderHeight;
+   public double getHeight(){
+      return height;
    }
    
    //policyHolderWeight
@@ -128,16 +128,16 @@ public class PolicyHolder{
       setPolicyHolderWeight sets the weight of the policy holder
       @param The weight of the policy holder
    */
-   public void setPolicyHolderWeight(double weight){
-      policyHolderWeight = weight;
+   public void setWeight(double w){
+      weight = w;
    } 
    
    /**
       getPolicyHolderWeight gets the weight of the policy holder
       @return The weight of the policy holder
    */
-   public double getPolicyHolderWeight(){
-      return policyHolderWeight;
+   public double getWeight(){
+      return weight;
    }
    
    //BMI method
@@ -147,7 +147,7 @@ public class PolicyHolder{
       @return The policy holder's BMI
    */
    public double calcBmi(){
-      return (policyHolderWeight * 703 ) / (policyHolderHeight*policyHolderHeight );
+      return (weight * 703 ) / (height*height );
    }
    
    //Insurance policy method
@@ -158,16 +158,21 @@ public class PolicyHolder{
    */
    public double calcInsurancePolicyPrice(){
       double price = 600;
-      if (policyHolderAge > 50){
+      if (age > 50){
          price += 75;
       }
-      if (policyHolderSmokingStatus.equalsIgnoreCase("smoker")){
+      if (smokingStatus.equalsIgnoreCase("smoker")){
          price += 100;
       }
       if (calcBmi() > 35){
          price += ((calcBmi()-35)*20);
       }
       return price;
+   }
+   
+   //toString
+   public String toString(){
+      return ("Policy Holder First Name: " + firstName + "\nPolicy Holder Last Name: " + lastName + "\nPolicy Holder Age: " + age + "\nPolicy Holder Smoking Status: " + smokingStatus + "\nPolicy Holder Height: " + height + "\nPolicy Holder Weight: " + weight);
    }
 
 }//end class
