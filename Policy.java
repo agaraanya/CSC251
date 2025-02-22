@@ -3,19 +3,22 @@ public class Policy{
    private int policyNum;
    private String providerName;
    private static int numPolicies = 0;
+   private PolicyHolder policyHolder;
       
    //no arg constructor
    public Policy(){
       policyNum = 123;
       providerName = "State Farm";
       numPolicies++;
+      policyHolder = new PolicyHolder();
    }
    
    //constructor with arguments
-   public Policy(int policyNum, String providerName){
+   public Policy(int policyNum, String providerName, String fName, String lName, int age, String smokingStatus, double height, double weight){
       this.policyNum = policyNum;
       this.providerName = providerName; 
       numPolicies++;
+      policyHolder = new PolicyHolder(fName, lName, age, smokingStatus, height, weight);
    }
    
    //setters and getters
