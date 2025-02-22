@@ -1,20 +1,20 @@
 public class Policy{
    
-   private int policyNum;
+   private String policyNum;
    private String providerName;
-   private static int numPolicies = 0;
+   public static int numPolicies = 0;
    private PolicyHolder policyHolder;
       
    //no arg constructor
    public Policy(){
-      policyNum = 123;
+      policyNum = "123";
       providerName = "State Farm";
       numPolicies++;
       policyHolder = new PolicyHolder();
    }
    
    //constructor with arguments
-   public Policy(int policyNum, String providerName, String fName, String lName, int age, String smokingStatus, double height, double weight){
+   public Policy(String policyNum, String providerName, String fName, String lName, int age, String smokingStatus, double height, double weight){
       this.policyNum = policyNum;
       this.providerName = providerName; 
       numPolicies++;
@@ -29,7 +29,7 @@ public class Policy{
      setPolicyNum method sets the policy number 
      @param The policy number
    */
-   public void setPolicyNum(int num){
+   public void setPolicyNum(String num){
       policyNum = num;
    }
    
@@ -37,7 +37,7 @@ public class Policy{
       getPolicyNum returns the policy number
       @return The policy number
    */
-   public int getPolicyNum(){
+   public String getPolicyNum(){
       return policyNum;
    }
    
@@ -59,8 +59,20 @@ public class Policy{
       return providerName;
    }
    
+   public String getSmokingStatus(){
+      return policyHolder.getSmokingStatus();
+   }
+   
+   public double getBMI(){
+      return policyHolder.calcBmi();
+   }
+   
+   public double getPrice(){
+      return policyHolder.calcInsurancePolicyPrice();
+   }
+   
    //toString
    public String toString(){
-      return ("Policy Number: " + policyNum + "\nProvider Name: " + providerName);
+      return ("Policy Number: " + policyNum + "\nProvider Name: " + providerName + "\n" + policyHolder.toString());
    }
 }
